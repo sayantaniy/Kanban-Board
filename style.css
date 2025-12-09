@@ -1,0 +1,148 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Indie+Flower&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Manrope:wght@200..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+main{
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+:root{
+    /* colors */
+    --bg-color: rgb(45, 43, 43);
+    --bg-task-color: rgba(195, 195, 221, 0.211);
+    --bg-button-color: blue;
+    --primary-text-color:rgb(255, 238, 238);
+    --btn-color:rgb(199, 13, 13);
+
+    /* padding */
+    --nav-padding: 15px 30px;
+    --section-padding: 15px 30px;
+    --padding-sm:5px;
+    --padding-md:10px;
+    --padding-lg:15px;
+    --padding-xl:20px;
+
+    /* radius */
+    --border-radius-sm:5px;
+    --border-radius-md:10px;
+    --border-radius-lg:15px;
+    --border-radius-xl:20px;
+}
+
+html,
+body{
+    height: 100%;
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-weight: 600;
+}
+
+body{
+    background-color: var(--bg-color);
+    color: var(--primary-text-color);
+}
+
+nav{
+    display:flex;
+    padding: var(--nav-padding);
+    align-items:center;
+    justify-content: space-between;
+}
+
+nav .left{
+    font-family: "Indie Flower", sans-serif;
+    font-size: 2.5rem;
+    color: rgb(234, 234, 185);
+    font-style: italic;
+}
+
+button{
+    background-color: var(--bg-button-color);
+    color: var(--primary-text-color);
+    padding: var(--padding-md) var(--padding-lg);
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    cursor: pointer;
+    border-radius: var(--border-radius-md);
+    font-family: "EB Garamond", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    
+}
+
+button:hover{
+    transform: scale(1.1);
+}
+
+section{
+    padding: var(--section-padding);
+    display: flex;
+    /* takes remaining space */
+    flex-grow: 1; 
+    justify-content: space-between;
+    gap: var(--padding-md);
+    /* align-items: center; */
+
+}
+
+section .task-column{
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to bottom, rgba(202, 199, 199, 0.1), rgba(0, 0, 0, 0.05));
+    background-color: rgba(248, 229, 229, 0.087);
+    flex-grow: 1;
+    border: 1px solid var(--primary-text-color);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-md);
+    font-weight: 400;
+    transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+section .task-column.hover-over{
+    border: 2px solid blue;
+    scale:1.02;
+    
+}
+
+section .task-column .heading{
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center;*/
+    padding: var(--padding-sm) var(--padding-md);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 2px;
+    text-underline-position: under;
+    font-weight: 700;
+}
+
+section .task-column .task{
+    padding: var(--padding-md);
+    background-color: var(--bg-task-color) ;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-sm);
+    margin: var(--padding-md);
+    cursor: grab;
+}
+
+section .task-column .task button{
+    align-self: flex-end;
+    background: var(--btn-color);
+    padding: var(--padding-sm) var(--padding-lg);
+}
