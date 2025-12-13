@@ -17,10 +17,11 @@ main{
 :root{
     /* colors */
     --bg-color: rgb(45, 43, 43);
+    --bg-color2: rgb(30, 29, 29);
     --bg-task-color: rgba(195, 195, 221, 0.211);
-    --bg-button-color: blue;
+    --bg-button-color: rgb(59, 59, 97);
     --primary-text-color:rgb(255, 238, 238);
-    --btn-color:rgb(199, 13, 13);
+    --btn-color:rgb(128, 47, 47);
 
     /* padding */
     --nav-padding: 15px 30px;
@@ -148,6 +149,75 @@ section .task-column .task button{
     background: var(--btn-color);
     padding: var(--padding-sm) var(--padding-lg);
 }
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;       
+}
+
+.modal.active{
+    display: flex;
+
+}
+
+.modal .bg{
+    /* position: absolute; */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.38);
+    backdrop-filter: blur(5px);
+    z-index: 0;
+}
+
+
+.modal .center{
+    padding: var(--padding-lg);
+    border-radius: var(--border-radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--padding-md);
+    z-index: 1;
+    background-color: var(--bg-color2);
+}
+
+.modal .center input,
+.modal .center textarea{
+    padding: var(--padding-sm) var(--padding-md);
+    border-radius: var(--border-radius-md);
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: var(--bg-task-color);
+    color: var(--primary-text-color);
+}
+
+.modal .center button{
+    background-color: var(--bg-button-color); 
+    color: var(--primary-text-color);
+    padding: var(--padding-md) var(--padding-lg);
+    border-radius: 5px;
+    border:none;
+    outline:none;
+    cursor: pointer;
+    border-radius: var(--border-radius-md);
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease-in-out;
+    width: fit-content;
+    align-self: center;
+}
+
 
 /* .hover-over{
     border: 2px solid rgb(0, 0, 0);
