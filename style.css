@@ -103,7 +103,7 @@ section .task-column{
     background: linear-gradient(to bottom, rgba(202, 199, 199, 0.1), rgba(0, 0, 0, 0.05));
     background-color: rgba(248, 229, 229, 0.087);
     flex-grow: 1;
-    border: 1px solid var(--primary-text-color);
+    border: 1px solid rgb(33, 33, 33);
     border-radius: var(--border-radius-md);
     display: flex;
     flex-direction: column;
@@ -113,7 +113,9 @@ section .task-column{
 }
 
 section .task-column.hover-over{
-    border: 2px solid blue;
+    
+    border: 1px solid var(--primary-text-color);
+    box-shadow: 10px 5px 30px rgba(4, 7, 0, 0.1);
     scale:1.02;
     
 }
@@ -146,3 +148,8 @@ section .task-column .task button{
     background: var(--btn-color);
     padding: var(--padding-sm) var(--padding-lg);
 }
+
+/* .hover-over{
+    border: 2px solid rgb(0, 0, 0);
+    scale:1.02;
+} */
