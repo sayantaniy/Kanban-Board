@@ -13,14 +13,28 @@ function addTask(title,desc,column){
     div.setAttribute('draggable', 'true');
     div.innerHTML = `<h3>${title}</h3>
                     <p> ${desc} </p>
-                    <button> Delete </button>
+                    <button class="delete-btn">
+                    <i class="fa-solid fa-trash"></i>
+                    </button>
+
     `;
     column.appendChild(div);
     div.addEventListener('drag', (e)=>{
         dragElement = div;
     })
+
+    //delete task
+const deleteTask = div.querySelector('button');
+deleteTask.addEventListener('click', (e)=>{
+    div.remove();
+    updateTaskCount();
+})
+
     return div;
 }
+
+
+
 
 
 function updateTaskCount() {
