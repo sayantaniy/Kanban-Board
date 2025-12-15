@@ -6,6 +6,29 @@ const done = document.querySelector("#done");
 const columns = [todo, progress, done];
 let dragElement = null;
 
+if(localStorage.getItem("tasks")) {
+    const data = JSON.parse(localStorage.getItem("tasks")) || {};  //returns an object hence for in loop
+    console.log(data); //logs an object
+
+    for(const key in data){
+        const column = document.querySelector(`#${key}`);  //here key is todo,progress,done
+        data[key].forEach(task => {
+            const div = document.createElement("div");
+            div.classList.add('task');
+            div.setAttribute('draggable', 'true');
+            div.innerHTML = `<h3>${task.title}</h3>
+                            <p> ${task.description} </p>
+                            <button> Delete </button>
+            `;
+            column.appendChild(div);
+            div.addEventListener('drag', (e)=>{
+                dragElement = div;
+            })
+        })
+    }
+}
+ 
+
 const tasks = document.querySelectorAll(".task"); //creates an array which consists the tasks
 
 tasks.forEach(task =>{   //goes to every element in tasks array
@@ -34,14 +57,26 @@ function addDragEventsOnColumn (column) {
 
     column.addEventListener('drop', (e)=>{
         e.preventDefault();
-        console.log("Dropped", dragElement, column);
+
+        
+
         column.appendChild(dragElement);
         column.classList.remove("hover-over");
 
+       
         columns.forEach(col=>{
 
             const tasks = col.querySelectorAll(".task");
             const count = col.querySelector(".right");
+    
+            tasksData[col.id] = Array.from(tasks).map(task => {  //Dynamic obj key tasksData[todo]
+                return {
+                    title: task.querySelector("h3").innerText,
+                    description: task.querySelector("p").innerText
+                }
+            })
+            localStorage.setItem("tasks", JSON.stringify(tasksData));
+    
             count.innerText = tasks.length;
         })
     })
@@ -66,6 +101,7 @@ modalbg.addEventListener("click", () => {
     modal.classList.remove("active");
 });
 
+// Adding Task
 addTaskButton.addEventListener("click", () => {
     
     const taskTitle = document.querySelector("#task-title-input").value;
@@ -86,10 +122,21 @@ addTaskButton.addEventListener("click", () => {
 
     todo.appendChild(div);
 
+
+    // Save to local storage
     columns.forEach(col=>{
 
         const tasks = col.querySelectorAll(".task");
         const count = col.querySelector(".right");
+
+        tasksData[col.id] = Array.from(tasks).map(task => {  //Dynamic obj key tasksData[todo]
+            return {
+                title: task.querySelector("h3").innerText,
+                description: task.querySelector("p").innerText
+            }
+        })
+        localStorage.setItem("tasks", JSON.stringify(tasksData));
+
         count.innerText = tasks.length;
     })
     
