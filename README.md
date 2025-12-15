@@ -62,16 +62,6 @@ This enables smooth movement between **To Do**, **In Progress**, and **Done** co
 ```
 ---
 
-### Project Structure
-
-kanban-board/
-│
-├── index.html   # Markup
-├── style.css    # Styling
-└── script.js    # Logic & functionality
-
----
-
 ## 🛠️ Tech Stack
 
 | Technology | Purpose |
@@ -80,4 +70,16 @@ kanban-board/
 | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg" width="28"/> **CSS3** | Styling, layout, and UI design |
 | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" width="28"/> **JavaScript** | Logic, DOM manipulation, and drag & drop |
 | <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/chrome/chrome-original.svg" width="28"/> **LocalStorage** | Persistent browser storage |
+
+---
+## 🧪 Testing / Preview
+
+<br/>
+
+<img src="TestingApp.png" alt="Kanban Board Screenshot" width="100%"/>
+
+<br/>
+
+
+
 
