@@ -16,7 +16,7 @@ main{
 
 :root{
     /* colors */
-    --bg-color: rgb(45, 43, 43);
+    --bg-color: rgb(39, 38, 46);
     --bg-color2: rgb(30, 29, 29);
     --bg-task-color: rgba(195, 195, 221, 0.211);
     --bg-button-color: rgb(59, 59, 97);
@@ -58,6 +58,8 @@ nav{
     padding: var(--nav-padding);
     align-items:center;
     justify-content: space-between;
+    top:0 !important;
+    position: sticky !important;
 }
 
 nav .left{
