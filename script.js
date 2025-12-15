@@ -1,6 +1,9 @@
+let tasksData = {};
+
 const todo = document.querySelector("#todo");
 const progress = document.querySelector("#progress");
 const done = document.querySelector("#done");
+const columns = [todo, progress, done];
 let dragElement = null;
 
 const tasks = document.querySelectorAll(".task"); //creates an array which consists the tasks
@@ -34,6 +37,13 @@ function addDragEventsOnColumn (column) {
         console.log("Dropped", dragElement, column);
         column.appendChild(dragElement);
         column.classList.remove("hover-over");
+
+        columns.forEach(col=>{
+
+            const tasks = col.querySelectorAll(".task");
+            const count = col.querySelector(".right");
+            count.innerText = tasks.length;
+        })
     })
 }
 
@@ -46,6 +56,7 @@ addDragEventsOnColumn(done);
 const toggleModalButton = document.querySelector("#toggle-modal");
 const modal = document.querySelector(".modal");
 const modalbg = document.querySelector(".modal .bg");
+const addTaskButton = document.querySelector('#add-task-btn');
 
 toggleModalButton.addEventListener("click", () => {
     modal.classList.toggle("active");
@@ -53,4 +64,35 @@ toggleModalButton.addEventListener("click", () => {
 
 modalbg.addEventListener("click", () => {
     modal.classList.remove("active");
+});
+
+addTaskButton.addEventListener("click", () => {
+    
+    const taskTitle = document.querySelector("#task-title-input").value;
+    const taskDesc = document.querySelector("#task-desc-input").value;
+    
+    const div = document.createElement("div");
+    div.classList.add('task');
+    div.setAttribute('draggable', 'true');
+
+    div.innerHTML = `<h3>${taskTitle}</h3>
+                    <p> ${taskDesc} </p>
+                    <button> Delete </button>
+    `;
+
+    div.addEventListener('drag', (e)=>{
+        dragElement = div;
+    })
+
+    todo.appendChild(div);
+
+    columns.forEach(col=>{
+
+        const tasks = col.querySelectorAll(".task");
+        const count = col.querySelector(".right");
+        count.innerText = tasks.length;
+    })
+    
+    modal.classList.remove("active");
+
 });
